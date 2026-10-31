@@ -1,0 +1,24 @@
+{
+  "annotations": {"list": []},
+  "editable": true,
+  "graphTooltip": 1,
+  "panels": [
+    {"title":"Orders stored","type":"stat","gridPos":{"h":4,"w":6,"x":0,"y":0},"targets":[{"expr":"foodflow_realtime_orders_total","refId":"A"}]},
+    {"title":"Pipeline paused","type":"stat","gridPos":{"h":4,"w":6,"x":6,"y":0},"targets":[{"expr":"foodflow_pipeline_paused","refId":"A"}],"fieldConfig":{"defaults":{"mappings":[{"type":"value","options":{"0":{"text":"Running"},"1":{"text":"Paused"}}}],"thresholds":{"mode":"absolute","steps":[{"color":"green","value":null},{"color":"red","value":1}]}}}},
+    {"title":"Latest order age","type":"stat","gridPos":{"h":4,"w":6,"x":12,"y":0},"targets":[{"expr":"foodflow_last_order_age_seconds","refId":"A"}],"fieldConfig":{"defaults":{"unit":"s"}}},
+    {"title":"Database available","type":"stat","gridPos":{"h":4,"w":6,"x":18,"y":0},"targets":[{"expr":"foodflow_realtime_database_available","refId":"A"}],"fieldConfig":{"defaults":{"mappings":[{"type":"value","options":{"0":{"text":"Unavailable"},"1":{"text":"Available"}}}],"thresholds":{"mode":"absolute","steps":[{"color":"red","value":null},{"color":"green","value":1}]}}}},
+    {"title":"Orders by prediction","type":"timeseries","gridPos":{"h":8,"w":12,"x":0,"y":4},"targets":[{"expr":"foodflow_realtime_orders_by_prediction","legendFormat":"{{prediction}}","refId":"A"}]},
+    {"title":"Average model confidence","type":"timeseries","gridPos":{"h":8,"w":12,"x":12,"y":4},"targets":[{"expr":"foodflow_model_average_confidence","legendFormat":"{{prediction}}","refId":"A"}],"fieldConfig":{"defaults":{"unit":"percentunit","max":1,"min":0}}},
+    {"title":"Total order value","type":"timeseries","gridPos":{"h":8,"w":24,"x":0,"y":12},"targets":[{"expr":"foodflow_realtime_order_value_total","legendFormat":"Total value","refId":"A"}],"fieldConfig":{"defaults":{"unit":"currencyINR"}}}
+  ],
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "style": "dark",
+  "tags": ["foodflow", "realtime", "prometheus"],
+  "templating": {"list": []},
+  "time": {"from": "now-30m", "to": "now"},
+  "timezone": "browser",
+  "title": "FoodFlow Realtime Monitoring",
+  "uid": "foodflow-realtime",
+  "version": 1
+}
